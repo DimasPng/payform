@@ -5,14 +5,18 @@ const secondElement = document.querySelector(".seconds");
 
 // Проверяем, есть ли уже уникальный ключ в localStorage
 let pageKey = localStorage.getItem("pageKey");
+let currentTime = Math.floor(Date.now() / 1000); // Текущее время в секундах
+let savedTime = localStorage.getItem(pageKey); // Время, сохраненное в localStorage
 
-// Если нет ключа, то генерируем и сохраняем его
-if (!pageKey) {
+if (!pageKey || !savedTime) {
   pageKey = generateUniqueKey();
   localStorage.setItem("pageKey", pageKey);
+  savedTime = currentTime + 20 * 60; // Устанавливаем 20 минут от текущего времени, если ключ или сохраненное время отсутствуют
+} else {
+  savedTime = parseInt(savedTime); // Преобразуем сохраненное время в число
 }
 
-let timeRemaining = localStorage.getItem(pageKey) || 20 * 60; // Получаем значение из localStorage или устанавливаем 20 минут в секундах
+let timeRemaining = Math.max(0, savedTime - currentTime); // Вычисляем оставшееся время
 
 const updateCountdown = function () {
   const hours = Math.floor((timeRemaining % 86400) / 3600);
@@ -24,19 +28,23 @@ const updateCountdown = function () {
   secondElement.textContent = String(seconds).padStart(2, "0");
 };
 
-const countdownInterval = setInterval(() => {
-  if (timeRemaining > 0) {
-    timeRemaining -= 1;
-    updateCountdown();
-    localStorage.setItem(pageKey, timeRemaining); // Сохраняем оставшееся время в localStorage с уникальным ключом
-  } else {
-    clearInterval(countdownInterval);
-    countdownElement.textContent = "00:00:00";
-    localStorage.removeItem(pageKey); // Удаляем значение из localStorage, когда время истекло
-  }
-}, 1000); // Интервал в миллисекундах (1 секунда)
+// Добавляем проверку, было ли время уже истекшим при загрузке страницы
+if (timeRemaining > 0) {
+  const countdownInterval = setInterval(() => {
+    if (timeRemaining > 0) {
+      timeRemaining -= 1;
+      updateCountdown();
+      localStorage.setItem(pageKey, currentTime + timeRemaining); // Сохраняем оставшееся время в localStorage с учетом текущего времени
+    } else {
+      clearInterval(countdownInterval);
+      countdownElement.textContent = "00:00:00";
+      //localStorage.removeItem(pageKey); // Если удалим запись, при обновлении странички, таймер запуститься заново
+    }
+  }, 1000); // Интервал в миллисекундах (1 секунда)
+} else {
+  countdownElement.textContent = "00:00:00"; // Устанавливаем текст "00:00:00", если время уже истекло
+}
 
-// Функция для генерации уникального ключа
 function generateUniqueKey() {
   return "timer_" + Date.now() + "_" + Math.random();
 }
