@@ -61,7 +61,9 @@ textarea,
 select {
   font-family: inherit;
   font-size: inherit;
-  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
 }
 
 button {
@@ -139,4 +141,75 @@ img {
   display: block;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.payment__form {
+  margin: 0 0 7rem 2.8rem;
+}
+
+.form__label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 1.9rem;
+}
+
+.form__field {
+  position: relative;
+}
+
+.form__field:not(:last-child) {
+  margin-bottom: 1.6rem;
+}
+
+.form__field_wallet {
+  max-width: 38.6rem;
+}
+
+.form__input {
+  width: 100%;
+  border: 1px solid rgba(68, 92, 101, 0.4);
+  background: none;
+  border-radius: 0.5rem;
+  height: 4.9rem;
+  padding: 1rem 4.5rem 1rem 1.5rem;
+  font-size: 1.6rem;
+  color: #445c65;
+}
+
+.form__copy {
+  padding: 0.5rem;
+  opacity: 0.5;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  transition: 0.3s;
+}
+
+.form__copy:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.form__copied {
+  font-size: 1.2rem;
+  margin: 0.2rem 0;
+  opacity: 0;
+}
+
+.form__field_sum {
+  max-width: 27rem;
+}
+
+.form__rub {
+  font-size: 1.4rem;
+  opacity: 0.5;
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.info {
+  color: #ff003b;
+  border-left: 1px solid #ff003b;
 }

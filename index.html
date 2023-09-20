@@ -57,8 +57,10 @@
           реквизитам указанным ниже
         </div>
         <div class="payment__form">
-          <label class="form__label">Реквизиты для перевода:</label>
-          <div class="form__field form__field__wallet">
+          <label for="wallet" class="form__label"
+            >Реквизиты для перевода:</label
+          >
+          <div class="form__field form__field_wallet">
             <input
               class="form__input"
               id="wallet"
@@ -72,8 +74,23 @@
             </div>
             <div class="form__copied" id="copied">Скопировано</div>
           </div>
+          <label for="sum" class="form__label">Точная сумма к оплате:</label>
+          <div class="form__field form__field_sum">
+            <input
+              class="form__input"
+              type="text"
+              id="sum"
+              name="sum"
+              value="1140"
+              readonly
+            />
+            <div class="form__rub">RUB</div>
+          </div>
         </div>
-        <div></div>
+        <div class="payment__desc info">
+          <b>Переведите строго одним платежом 1140.00 ₽</b>
+          В противном случае деньги не будут зачислены!
+        </div>
         <div></div>
         <div></div>
       </div>
