@@ -39,11 +39,6 @@ ol {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 h1,
 h2,
 h3 {
@@ -72,9 +67,30 @@ button {
   cursor: pointer;
 }
 
+a,
+:before,
+button {
+  transition: 0.3s;
+}
+
+a {
+  color: #2f80ed;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 img {
   vertical-align: top;
   max-width: 100%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  padding: 5rem 5rem 5rem 0;
 }
 
 .page {
@@ -212,4 +228,81 @@ img {
 .info {
   color: #ff003b;
   border-left: 1px solid #ff003b;
+}
+
+.payment__wait {
+  font-size: 1.4rem;
+  margin: 0 0 8.4rem 2.8rem;
+  display: flex;
+  max-width: 50rem;
+}
+
+.loader {
+  width: 3.6rem;
+  height: 3.6rem;
+  position: relative;
+}
+
+.payment__loader {
+  flex-shrink: 0;
+  width: 3.6rem;
+  margin-right: 3rem;
+}
+
+.loader__circle {
+  position: absolute;
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+.loader__circle_big {
+  background: url(./assets/images/loader.svg) top left no-repeat;
+  animation: rotation 1.5s linear infinite;
+}
+
+.loader__circle_small {
+  background: url(./assets/images/loader.svg) top 0.9rem left 0.9rem no-repeat;
+  background-size: 1.6rem;
+  animation: rotation2 1.5s linear infinite;
+}
+
+.payment__callback {
+  font-size: 1.4rem;
+  margin-left: 2.8rem;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+  .content {
+    padding: 5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .content {
+    padding: 4rem 3rem;
+  }
+  .payment__loader {
+    margin-right: 2rem;
+  }
 }
