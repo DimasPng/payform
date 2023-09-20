@@ -21,6 +21,62 @@
           alt="card"
         />
       </div>
+      <div class="payment">
+        <div class="payment__head">
+          <h2 class="payment__title">Оплата картами</h2>
+          <div class="payment__logos">
+            <div class="payment__logo">
+              <img
+                src="./assets/images/visa.png"
+                srcset="./assets/images/visa_2x.png 2x"
+                alt="card visa"
+              />
+            </div>
+            <div class="payment__logo">
+              <img
+                src="./assets/images/mastercard.png"
+                srcset="./assets/images/mastercard_2x.png 2x"
+                alt="card mastercard"
+              />
+            </div>
+            <div class="payment__logo">
+              <img
+                src="./assets/images/mir.png"
+                srcset="./assets/images/mir_2x.png 2x"
+                alt="card mir"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="payment__desc">
+          <b
+            >Выполнить перевод необходимо в течении 00:00:00
+            <span class="payment__countdown"></span
+          ></b>
+          Зайдите в ваше банковское приложение и переведите точную сумму по
+          реквизитам указанным ниже
+        </div>
+        <div class="payment__form">
+          <label class="form__label">Реквизиты для перевода:</label>
+          <div class="form__field form__field__wallet">
+            <input
+              class="form__input"
+              id="wallet"
+              type="text"
+              name="wallet"
+              value="2202 2067 0000 0000"
+              readonly
+            />
+            <div class="form__copy" id="copy">
+              <img src="./assets/images/copy.svg" alt="copy" />
+            </div>
+            <div class="form__copied" id="copied">Скопировано</div>
+          </div>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </body>
 </html>
