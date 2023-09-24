@@ -82,6 +82,19 @@
               </div>
               <div class="form__copied" id="copied">Скопировано</div>
             </div>
+            <div class="form__field form__field_wallet">
+              <label for="cardOwner" class="form__label"
+                >Карта выпущена на:</label
+              >
+              <input
+                id="cardOwner"
+                class="form__input"
+                type="text"
+                name="wallet"
+                value="Петр Петров"
+                readonly
+              />
+            </div>
             <label for="sum" class="form__label">Точная сумма к оплате:</label>
             <div class="form__field form__field_sum">
               <input
@@ -111,10 +124,12 @@
             Не прошел платеж -
             <a target="_blank" href="#">обратитесь в поддержку</a>
           </div>
+          <button id="testBtn">Запрос</button>
         </div>
       </div>
     </div>
   </body>
   <script src="assets/js/script.js"></script>
   <script src="assets/js/copy.js"></script>
+  <script src="assets/js/api.js"></script>
 </html>
